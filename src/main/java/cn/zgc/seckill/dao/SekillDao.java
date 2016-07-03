@@ -1,10 +1,18 @@
 package cn.zgc.seckill.dao;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
+
+import cn.zgc.seckill.entity.Seckill;
+
 /**
  * 秒杀库存的DAO接口
  * @author zgc
  */
-public class SekillDao {
+public interface SekillDao {
 	/**
 	 * 减库存
 	 * 
