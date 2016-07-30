@@ -9,6 +9,7 @@ import org.junit.Test;
 
 import cn.zgc.seckill.BaseTest;
 import cn.zgc.seckill.entity.Seckill;
+import cn.zgc.seckill.enums.SeckillStateEnum;
 
 public class SeckillDaoTest extends BaseTest{
 	@Resource
@@ -16,6 +17,9 @@ public class SeckillDaoTest extends BaseTest{
 	
 	@Test
 	public void testQueryById() throws Exception {
+		
+		System.out.println(SeckillStateEnum.getInstance(1).getStateInfo());
+		
 		long id = 1000;
 		Seckill seckill = seckillDao.queryById(id);
 		System.out.println(seckill.getName());
