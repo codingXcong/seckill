@@ -31,7 +31,7 @@ public class SeckillController {
 	private SeckillService seckillService;
 	
 	//列表页
-	@RequestMapping("list")
+	@RequestMapping("/list")
 	public String list(Model model){
 		// 获取列表页
 		List<Seckill> list = seckillService.getSeckillList();
@@ -76,12 +76,13 @@ public class SeckillController {
 		public SeckillResult<SeckillExecution> execute(@PathVariable("seckillId") Long seckillId,
 				@PathVariable("md5") String md5, @CookieValue(value = "killPhone", required = false) Long phone) {
 			// springmvc valid
-			if (phone == null) {
+			if (phone == null) { 
 				return new SeckillResult<>(false, "未注册");
 			}
 			try {
 				// 存储过程调用
-				SeckillExecution execution = seckillService.executeSeckillProcedure(seckillId, phone, md5);
+				//SeckillExecution execution = seckillService.executeSeckillProcedure(seckillId, phone, md5);
+				SeckillExecution execution = seckillService.executeSeckill(seckillId, phone, md5);
 				return new SeckillResult<SeckillExecution>(true, execution);
 			} catch (RepeatKillException e) {
 				SeckillExecution execution = new SeckillExecution(seckillId, SeckillStateEnum.REPEAT_KILL);
